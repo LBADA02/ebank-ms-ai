@@ -1,0 +1,49 @@
+# IntelliJ
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code (if someone uses it)
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# Build folders (Gradle)
+build/
+.gradle/
+
+# Java compiled files
+*.class
+*.jar
+*.war
+
+# Spring Boot
+target/
+
+# Docker (optional depending usage)
+*.pid
+*.seed
+
+# Node (if frontend later)
+remboursement-frontend/node_modules
+node_modules/
+#uploads file
+uploads/
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+
+*.hprof
