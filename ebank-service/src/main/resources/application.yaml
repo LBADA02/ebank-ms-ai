@@ -14,3 +14,7 @@ spring:
       enabled: true
     config:
       enabled : false
+  ai:
+    mcp:
+      server:
+        protocol: streamable

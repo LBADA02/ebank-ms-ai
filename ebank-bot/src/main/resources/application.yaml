@@ -1,0 +1,34 @@
+server:
+  port: 8058
+
+spring:
+  application:
+    name: ebank-bot
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      enabled: false
+  ai:
+    model:
+      chat: google-genai
+    google:
+      genai:
+        api-key: ${GEMINI_API_KEY}
+        chat:
+          model: gemini-3.1-flash-lite
+
+    mcp:
+      client:
+        streamable-http:
+          connections:
+            customer-service:
+              url: http://localhost:8056
+              endpoint: /mcp
+            account-service:
+              url: http://localhost:8057
+              endpoint: /mcp
+
+
+discord:
+  token: ${DISCORD_BOT_TOKEN}

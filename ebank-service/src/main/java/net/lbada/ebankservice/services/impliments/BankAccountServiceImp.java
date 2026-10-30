@@ -6,6 +6,8 @@ import net.lbada.ebankservice.repositories.BankAccountRepository;
 import net.lbada.ebankservice.restClient.CustomerRestClient;
 import net.lbada.ebankservice.services.BankAccountService;
 import net.lbada.ebankservice.services.CustomerGateway;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -27,12 +29,14 @@ public class BankAccountServiceImp implements BankAccountService {
     }
 
     @Override
+    @McpTool(description = "Get all Banks accounts")
     public List<BankAccount> getAllBankAccounts() {
         return bankAccountRepository.findAll();
     }
 
     @Override
-    public BankAccount getBankAccountById(String id) {
+    @McpTool(description = "find a bank account by id")
+    public BankAccount getBankAccountById(@McpToolParam(description = "The bank account is") String id) {
         BankAccount bankAccount = bankAccountRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Bank Account not found")
         );
@@ -43,7 +47,8 @@ public class BankAccountServiceImp implements BankAccountService {
     }
 
     @Override
-    public BankAccount saveBankAccount(BankAccount bankAccount) {
+    @McpTool(description = "Save a new bank account")
+    public BankAccount saveBankAccount(@McpToolParam(description = "The bank account to save (balanc , type[CURENT_ACCOUNT , SAVING_ACCOUNT] , customerId") BankAccount bankAccount) {
         try {
             Customer customer = customerRestClient.getCustomerById(bankAccount.getCustomerId());
             bankAccount.setId(UUID.randomUUID().toString());
