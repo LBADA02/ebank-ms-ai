@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+import java.math.BigDecimal;
+
 @SpringBootApplication
 @EnableFeignClients
 public class EbankServiceApplication {
@@ -28,7 +30,7 @@ public class EbankServiceApplication {
                 {
                     bankAccountServiceImp.saveBankAccount(BankAccount.builder()
                                     .type(String.valueOf(Math.random()>0.5? BankAccountTypes.CURENT_ACCOUNT : BankAccountTypes.SAVING_ACCOUNT))
-                                    .balance(1000 + Math.random()*5000)
+                                    .balance(BigDecimal.valueOf(1000 + Math.random()*5000))
                                     .customerId((long) i)
                             .build());
                 }

@@ -6,6 +6,8 @@ import net.lbada.ebankservice.restClient.CustomerRestClient;
 import net.lbada.ebankservice.services.CustomerGateway;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class CustomerGatewayImpl implements CustomerGateway {
@@ -22,6 +24,11 @@ public class CustomerGatewayImpl implements CustomerGateway {
     )
     public Customer getCustomerById(Long id) {
         return customerRestClient.getCustomerById(id);
+    }
+
+    @Override
+    public List<Customer> getCustomersByIds(List<Long> customersIds) {
+        return  customerRestClient.getCustomersByIds(customersIds);
     }
 
 
