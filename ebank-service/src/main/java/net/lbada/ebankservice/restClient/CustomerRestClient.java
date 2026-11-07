@@ -12,7 +12,7 @@ public interface CustomerRestClient {
     @RequestMapping(method = RequestMethod.GET , value = "/customers/{id}")
     Customer getCustomerById(@PathVariable Long id);
 
-    @GetMapping("/customers/batch")
+    @PostMapping("/customers/batch")
     public List<Customer> getCustomersByIds(@RequestBody List<Long> customersIds);
 
 }

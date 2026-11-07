@@ -47,3 +47,6 @@ coverage/
 *.swp
 
 *.hprof
+
+# Local notes
+docs/*.md

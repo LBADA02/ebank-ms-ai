@@ -31,18 +31,14 @@ public class Transfer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "source_account_id",
-            referencedColumnName = "id",
-            insertable = false,
-            updatable = false
+            nullable = false
     )
     private BankAccount sourceAccount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "destination_account_id",
-            referencedColumnName = "id",
-            insertable = false,
-            updatable = false
+            nullable = false
     )
     private BankAccount destinationAccount;
 

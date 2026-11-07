@@ -25,7 +25,7 @@ public class TransactionServiceImpl implements TransactionService {
     public void recordTransfer(Transfer transfer) {
         // Debit transaction: sender
         Transaction debit = new Transaction();
-        debit.setAccountId(transfer.getSourceAccountId());
+        debit.setAccountId(transfer.getSourceAccount().getId());
         debit.setTransactionTypes(TransactionTypes.DEBIT);
         debit.setOperationType( OperationType.TRANSFER);
         debit.setAmount(transfer.getAmount());
@@ -35,7 +35,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         // Credit transaction: receiver
         Transaction credit = new Transaction();
-        credit.setAccountId(transfer.getDestinationAccountId());
+        credit.setAccountId(transfer.getDestinationAccount().getId());
         credit.setTransactionTypes(TransactionTypes.CREDIT);
         credit.setOperationType(OperationType.TRANSFER);
         credit.setAmount(transfer.getAmount());

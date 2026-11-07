@@ -9,4 +9,6 @@ public interface CustomerService {
     public List<Customer> getAllCustomer();
     public Customer findCustomerById(Long id);
     public Customer saveCustomer(Customer customer);
+
+    List<Customer> getBatchCustomer(List<Long> customerIds);
 }

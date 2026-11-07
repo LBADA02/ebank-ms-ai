@@ -8,6 +8,7 @@ import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImp implements CustomerService {
@@ -35,6 +36,11 @@ public class CustomerServiceImp implements CustomerService {
     @McpTool(description = "save a customer")
     public Customer saveCustomer(@McpToolParam(description = "The customer to save (name , email)") Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    @Override
+    public List<Customer> getBatchCustomer(List<Long> customerIds) {
+        return customerRepository.findAllById(customerIds);
     }
 
 

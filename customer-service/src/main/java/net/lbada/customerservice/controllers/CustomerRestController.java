@@ -22,6 +22,16 @@ public class CustomerRestController {
         return customerService.getAllCustomer();
 
     }
+
+    @PostMapping("/batch")
+    public List<Customer> getBatchCustomer(
+            @RequestBody List<Long> customerIds){
+        return customerService.getBatchCustomer(customerIds);
+
+    }
+
+
+
     @GetMapping("/{id}")
     public Customer findCustomerById(@PathVariable Long id){
         return  customerService.findCustomerById(id);
